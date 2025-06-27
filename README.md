@@ -31,6 +31,24 @@ how should it work?
 
 an example of a step might be:
 
+```
+src
+|- microflow
+    |- steps
+        |- BaseStep.py
+        |- PythonStep.py
+        |- HttpGetStep.py
+        |- GCSUploadStep.py
+    |- clients
+        |- GCSClient.py
+        |- HttpClient.py
+    |- 
+    |- pipeline_builder.py
+    |- steps.py
+```
+
+```
+
 ```python
 class FetchDataStep:
     def __init__(self, source):
