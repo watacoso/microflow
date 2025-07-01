@@ -13,7 +13,7 @@ pipx install poetry
 i then created project microflow, added some dependencies. specifically requests, google-cloud-storage,
 and for dev pytest, pytest-mock, response 
 
-
+i also installed gcloud.
 
 ---
 
