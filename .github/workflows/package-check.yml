@@ -1,5 +1,4 @@
-name: Python application
-
+name: Package Check
 on:
   push:
     branches: [ "main" ]

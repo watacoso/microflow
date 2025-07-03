@@ -1,4 +1,4 @@
-name: package release
+name: Package Release
 
 permissions:
   contents: read
