@@ -12,6 +12,8 @@ jobs:
       python-version: '3.12'
       poetry-version: '1.5.1'
   build:
+    runs-on: ubuntu-latest
+    steps:
     - name: Build package
       working-directory: miniduct
       run: |
