@@ -31,6 +31,9 @@ jobs:
       with:
         path: ./.venv
         key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
+    - name: check folder
+      run: |
+        ls
     - name: Install dependencies
       run: |
         poetry install
