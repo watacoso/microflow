@@ -1,7 +1,21 @@
 import requests
 from typing import Callable
 
-class HttpDataSource:
+class DataSource:
+    """
+    Base class for data sources.
+    """
+
+    def get(self) -> dict:
+        """
+        Fetch data from the data source.
+        
+        :return: Data fetched from the data source.
+        """
+        raise NotImplementedError("Subclasses should implement this method.")
+
+
+class HttpDataSource(DataSource):
        
     def __init__(self, host: str, endpoint: str):
             self.host = host
@@ -20,7 +34,7 @@ class HttpDataSource:
         response.raise_for_status()
         return response.json()
     
-class PythonDataSource:
+class PythonDataSource(DataSource):
     """
     Class to handle Python data source.
     """

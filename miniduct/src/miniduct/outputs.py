@@ -1,6 +1,22 @@
 import json
 
-class GCSOutput:
+class Output:
+    """
+    Base class for output handlers.
+    """
+
+    def write(self, data, file_name) -> None:
+        """
+        Write data to the specified output.
+
+        :param data: Data to be written.
+        :param file_name: Name of the file to be created.
+        :return: None
+        """
+        raise NotImplementedError("Subclasses should implement this method.")
+    
+    
+class GCSOutput(Output):
     """
     Class to handle output to Google Cloud Storage (GCS).
     """

@@ -1,48 +1,39 @@
-from miniduct.pipeline import run_pipeline
+from miniduct import run_pipeline
 import pytest
 import datetime
 from unittest.mock import MagicMock
 
-TIME_FORMAT = "%Y%m%d_%H%M%S"
+TEST_DATETIME = datetime.datetime(2023, 10, 1, 12, 0, 0)
 
 @pytest.fixture
-def mock_data_source():
-    class MockDataSource:
-        def get(self):
-            print("MockDataSource: Fetching data")
-    mock_data_source = MockDataSource()
-    mock_data_source.get = MagicMock(name='get', return_value={"data": "mock_data"})
-    return mock_data_source
-        
-@pytest.fixture
-def mock_outputs():
-    class MockOutput1:
-        def write(self, data, file_name):
-            print(f"MockOutput1: Writing data {data} to {file_name}")
-            
-    class MockOutput2:
-        def write(self, data, file_name):
-            print(f"MockOutput2: Writing data {data} to {file_name}")
-        
-    mock_output1 = MockOutput1()
-    mock_output1.write = MagicMock()
-    mock_output2 = MockOutput2()
-    mock_output2.write = MagicMock()
-    return [mock_output1, mock_output2]
+def patch_datetime_now(monkeypatch):
+    class MockDatetime:
+        @classmethod
+        def now(cls):
+            return TEST_DATETIME
+    # Mock the datetime class to return a fixed date and time
+    monkeypatch.setattr(datetime, 'datetime', MockDatetime)
 
-def test_run_pipeline(mock_data_source, mock_outputs):
- 
+def test_main(mocker,patch_datetime_now):
+    
+    expected_output_name= "test_pipeline_20231001_120000.json"
+
+    expected_data = {"data": "mock_data"}
+    mock_datasource=mocker.Mock(name='DataSource')
+    mock_datasource.get.return_value = expected_data
+    
+    mock_outputs = [mocker.Mock(name='Output1'), mocker.Mock(name='Output2')]
+
     run_pipeline(
         pipeline_name="test_pipeline",
-        ingestion=mock_data_source,
+        ingestion=mock_datasource,
         outputs=mock_outputs
     )
     
-    mock_data_source.get.assert_called_once()
+    mock_datasource.get.assert_called_once()
     
     for output in mock_outputs:
         output.write.assert_called_once()
-        data = mock_data_source.get.return_value
+        data = mock_datasource.get.return_value
         print(f"Data to be written: {data}")
-        file_name = f"test_pipeline_{datetime.datetime.now().strftime(TIME_FORMAT)}.json"
-        output.write.assert_called_with(data, file_name)
+        output.write.assert_called_with(expected_data, expected_output_name)
