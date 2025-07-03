@@ -31,10 +31,8 @@ jobs:
       with:
         path: ./.venv
         key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-    - name: enter folder
-      run: |
-        cd miniduct
     - name: Install dependencies
+      working-directory: miniduct
       run: |
         poetry install
     - name: Lint with ruff
