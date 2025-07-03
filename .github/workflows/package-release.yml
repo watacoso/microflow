@@ -1,42 +1,17 @@
 name: Package Release
 
+on: workflow_dispatch
+
 permissions:
   contents: read
 
 jobs:
+  test:
+    uses: ./.github/workflows/package-check.yml
+    with:
+      python-version: '3.12'
+      poetry-version: '1.5.1'
   build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.12
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.12"
-    - name: Install poetry
-      run: |
-        python -m pip install poetry
-    - name: Configure poetry
-      run: |
-        poetry config virtualenvs.in-project true
-    - name: Cache the virtualenv
-      uses: actions/cache@v4
-      with:
-        path: ./.venv
-        key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-    - name: Install dependencies
-      working-directory: miniduct
-      run: |
-        poetry install
-    - name: Lint with ruff
-      working-directory: miniduct
-      run: |
-        poetry run ruff check
-    - name: Run tests
-      working-directory: miniduct
-      run: |
-        poetry run pytest
     - name: Build package
       working-directory: miniduct
       run: |
