@@ -33,7 +33,7 @@ jobs:
         key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
     - name: check folder
       run: |
-        ls
+        ls miniduct
     - name: Install dependencies
       run: |
         poetry install
