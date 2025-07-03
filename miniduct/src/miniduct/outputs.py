@@ -1,5 +1,6 @@
 import json
 
+
 class Output:
     """
     Base class for output handlers.
@@ -14,8 +15,8 @@ class Output:
         :return: None
         """
         raise NotImplementedError("Subclasses should implement this method.")
-    
-    
+
+
 class GCSOutput(Output):
     """
     Class to handle output to Google Cloud Storage (GCS).
@@ -31,7 +32,7 @@ class GCSOutput(Output):
         self.bucket_name = bucket_name
         self.blob_path = blob_path
 
-    def write(self, data,file_name) -> None:
+    def write(self, data, file_name) -> None:
         """
         Write data to the specified GCS bucket and blob.
 
@@ -43,7 +44,7 @@ class GCSOutput(Output):
 
         client = storage.Client()
         bucket = client.bucket(self.bucket_name)
-        blob_name= f'{self.blob_path}/{file_name}.json'
+        blob_name = f"{self.blob_path}/{file_name}.json"
         blob = bucket.blob(blob_name)  # Create a blob object with the specified name
-        
-        blob.upload_from_string(data=json.dumps(data),content_type='application/json')  # Assuming data is a string
+
+        blob.upload_from_string(data=json.dumps(data), content_type="application/json")  # Assuming data is a string
