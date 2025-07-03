@@ -13,7 +13,7 @@ repos:
     hooks:
       - id: black
         name: black
-        entry: poetry -C ./miniduct run black .
+        entry: poetry -C run black .
         language: system
-        types: [python]
-        files: ^miniduct/
+        types: [file, python]
+        files: '^(src|test)/'
