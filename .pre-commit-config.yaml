@@ -16,3 +16,4 @@ repos:
         entry: poetry -C ./miniduct run black .
         language: system
         types: [python]
+        files: ^miniduct/
