@@ -48,7 +48,6 @@ line-length = 120
 # Same as Black.
 line-length = 120
 
-exclude = ["jupyter_notebook_config.py"]
 lint.select = [
     "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
     "W",  # pycodestyle warnings
