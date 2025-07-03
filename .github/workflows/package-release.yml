@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   test:
-    uses: watacoso/miniflow/.github/workflows/package-check.yml@main
+    uses: watacoso/miniduct/.github/workflows/package-check.yml@main
     with:
       python-version: '3.12'
       poetry-version: '1.5.1'
