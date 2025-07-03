@@ -14,6 +14,7 @@ repos:
       - id: black
         name: black
         entry: poetry run black
+        args: [--config=miniduct/pyproject.toml]
         language: system
         types: [python]
       - id: ruff
