@@ -2,7 +2,7 @@ import datetime
 
 import pytest
 
-from miniduct.pipeline import run_pipeline
+from miniduct import run_pipeline
 
 TEST_DATETIME = datetime.datetime(2023, 10, 1, 12, 0, 0)
 
