@@ -4,10 +4,12 @@ on:
     inputs:
       python-version:
         description: "Python version to use"
+        type: string
         required: true
         default: "3.12"
       poetry-version:
         description: "Poetry version to use"
+        type: string
         required: true
         default: "1.5.1"
   push:
