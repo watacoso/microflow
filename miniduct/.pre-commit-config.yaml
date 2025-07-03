@@ -19,7 +19,7 @@ repos:
         files: '^(src|test)/'
       - id: ruff
         name: ruff
-        entry: poetry -C run ruff format --fixe
+        entry: poetry -C run ruff check --fix
         language: system
         types: [file, python]
         files: '^(src|test)/'
