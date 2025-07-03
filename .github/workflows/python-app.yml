@@ -37,7 +37,7 @@ jobs:
         ls
     - name: Install dependencies
       run: |
-        poetry install
+        poetry install miniduct/pyproject.toml
     - name: Lint with ruff
       run: |
         poetry run ruff .
