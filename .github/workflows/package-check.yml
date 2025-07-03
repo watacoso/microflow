@@ -1,5 +1,15 @@
 name: Package Check
 on:
+  workflow_call:
+    inputs:
+      python-version:
+        description: "Python version to use"
+        required: true
+        default: "3.12"
+      poetry-version:
+        description: "Poetry version to use"
+        required: true
+        default: "1.5.1"
   push:
     branches: [ "main" ]
   pull_request:
