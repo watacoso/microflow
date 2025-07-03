@@ -49,7 +49,7 @@ line-length = 120
 line-length = 120
 
 exclude = ["jupyter_notebook_config.py"]
-select = [
+lint.select = [
     "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
     "W",  # pycodestyle warnings
     "F",  # pyflakes
@@ -57,12 +57,12 @@ select = [
     "C",  # flake8-comprehensions
     "B",  # flake8-bugbear
 ]
-ignore = [
+lint.ignore = [
     "E501",  # line too long, handled by black
     "C901",  # too complex
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 order-by-type = true
 relative-imports-order = "closest-to-furthest"
 extra-standard-library = ["typing"]

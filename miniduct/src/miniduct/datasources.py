@@ -1,5 +1,6 @@
-import requests
 from typing import Callable
+
+import requests
 
 
 class DataSource:

@@ -1,7 +1,8 @@
-from miniduct import run_pipeline
-import pytest
 import datetime
-from unittest.mock import MagicMock
+
+import pytest
+
+from miniduct import run_pipeline
 
 TEST_DATETIME = datetime.datetime(2023, 10, 1, 12, 0, 0)
 
