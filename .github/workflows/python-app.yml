@@ -38,7 +38,7 @@ jobs:
     - name: Lint with ruff
       working-directory: miniduct
       run: |
-        poetry run ruff .
+        poetry run ruff check
     - name: Run tests
       working-directory: miniduct
       run: |
