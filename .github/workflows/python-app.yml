@@ -31,12 +31,12 @@ jobs:
       with:
         path: ./.venv
         key: ${{ runner.os }}-venv-${{ hashFiles('**/poetry.lock') }}
-    - name: check folder
+    - name: enter folder
       run: |
-        ls
+        cd miniduct
     - name: Install dependencies
       run: |
-        poetry install miniduct/pyproject.toml
+        poetry install
     - name: Lint with ruff
       run: |
         poetry run ruff .
