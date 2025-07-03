@@ -7,7 +7,7 @@ def get_base_name(name):
     return f"{name}_{datetime.datetime.now().strftime(TIME_FORMAT)}.json"
 
 
-def run_pipeline(pipeline_name, ingestion: object, outputs: list = [], name_template=get_base_name):
+def run_pipeline(pipeline_name, ingestion: object, outputs: list = None, name_template=get_base_name):
     """
     Function to run a pipeline with the given name, ingestion method, and outputs.
 
@@ -16,6 +16,9 @@ def run_pipeline(pipeline_name, ingestion: object, outputs: list = [], name_temp
     :param outputs: List of output methods to process the data.
     :return: None
     """
+
+    if outputs is None:
+        outputs = []
     data = ingestion.get()
     print("Data fetched from ingestion:", data)
 
