@@ -17,3 +17,9 @@ repos:
         language: system
         types: [file, python]
         files: '^(src|test)/'
+      - id: ruff
+        name: ruff
+        entry: poetry -C run ruff format --fixe
+        language: system
+        types: [file, python]
+        files: '^(src|test)/'
