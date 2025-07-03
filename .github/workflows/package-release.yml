@@ -6,13 +6,11 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  build:
     uses: watacoso/miniduct/.github/workflows/package-check.yml@main
     with:
       python-version: '3.12'
       poetry-version: '1.5.1'
-  build:
-    runs-on: ubuntu-latest
     steps:
     - name: Build package
       working-directory: miniduct
