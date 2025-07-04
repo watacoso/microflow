@@ -14,9 +14,8 @@ jobs:
       - name: Publish python poetry package
         uses: JRubics/poetry-publish@v2.1
         with:
-          python-version: "3.12"
-          poetry-version: "1.8.0"
-          package-directory: miniduct/dist
-          pypi-token: ${{ secrets.PYPI_TOKEN }}
-          poetry-install-options: "-C miniduct"
-          skip-checks: true
+          python_version: "3.12"
+          poetry_version: "1.8.0"
+          package_directory: miniduct/dist
+          pypi_token: ${{ secrets.PYPI_TOKEN }}
+          poetry_install_options: "-C miniduct"
