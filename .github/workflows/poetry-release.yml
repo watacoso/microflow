@@ -1,4 +1,4 @@
-name: Package Release
+name: Poetry Release
 
 on:
   release:

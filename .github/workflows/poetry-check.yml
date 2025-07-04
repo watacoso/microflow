@@ -1,4 +1,4 @@
-name: Package Check
+name: Poetry Check
 
 on:
   push:
