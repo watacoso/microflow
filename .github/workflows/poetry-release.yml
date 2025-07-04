@@ -16,3 +16,5 @@ jobs:
         with:
           python_version: "3.12"
           pypi_token: ${{ secrets.PYPI_TOKEN }}
+          poetry_install_options: "-C miniduct"
+          poetry_publish_options": "-C miniduct"
