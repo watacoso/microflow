@@ -1,1 +1,5 @@
-{"image":"mcr.microsoft.com/devcontainers/base:ubuntu"}
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    }
+}
