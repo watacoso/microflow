@@ -31,6 +31,8 @@ def test_main(mocker, patch_datetime_now):
 
     mock_datasource.get.assert_called_once()
 
+    print(f"Expected output name: {expected_output_name}")
+
     for output in mock_outputs:
         output.write.assert_called_once()
         data = mock_datasource.get.return_value
