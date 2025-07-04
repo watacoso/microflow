@@ -1,7 +1,6 @@
 [project]
 name = "miniduct"
-version = "0.1.0"
-description = ""
+description = "a small library for monothread orchestration of data pipelines"
 authors = [
     {name = "watacoso",email = "watacoso@gmail.com"}
 ]
@@ -29,6 +28,7 @@ dynamic = ["version"]
 
 [tool.poetry]
 packages = [{include = "miniduct", from = "src"}]
+version = "0.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.4.1"
@@ -37,8 +37,8 @@ responses = "^0.25.7"
 
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0","poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
 
 [tool.black]
 skip-string-normalization = true
