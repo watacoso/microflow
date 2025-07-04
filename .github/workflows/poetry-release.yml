@@ -16,6 +16,5 @@ jobs:
         with:
           python_version: "3.12"
           poetry_version: "1.8.0"
-          package_directory: miniduct/dist
+          package_directory: miniduct
           pypi_token: ${{ secrets.PYPI_TOKEN }}
-          poetry_install_options: "-C miniduct"
