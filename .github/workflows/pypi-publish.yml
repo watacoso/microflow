@@ -37,4 +37,4 @@ jobs:
         # and set the package version to `1.2.3` in the built wheel and sdist.
 
       - name: Publish package to PyPI
-        run: poetry -C miniduct publish --build --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
+        run: poetry -C miniduct publish --build --username __token__ --password ${{ secrets.PYPI_TOKEN }}
