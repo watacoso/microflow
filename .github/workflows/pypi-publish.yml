@@ -1,0 +1,43 @@
+# .github/workflows/release.yml
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger on tags like v1.0, v2.3.4, etc.
+
+jobs:
+  build-and-publish:
+    name: Build and publish Python distributions to PyPI
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for trusted publishing
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # IMPORTANT: Fetches all history to get the tag
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry and the dynamic versioning plugin
+        run: |
+          pip install poetry
+          # We need to tell poetry to install the plugin
+          poetry self add "poetry-dynamic-versioning>=1.0.0,<2.0.0"
+
+      - name: Build the package
+        run: poetry -C miniduct build
+        # This is where the magic happens!
+        # `poetry-dynamic-versioning` will look at the git tag (e.g., v1.2.3)
+        # and set the package version to `1.2.3` in the built wheel and sdist.
+
+      - name: Publish package to PyPI
+        run: poetry -C miniduct publish
+        env:
+          # Use a token for authentication
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
