@@ -18,4 +18,5 @@ jobs:
           poetry-version: "1.8.0"
           package-directory: miniduct
           pypi-token: ${{ secrets.PYPI_TOKEN }}
+          poetry-install-options: "-C miniduct"
           skip-checks: true
